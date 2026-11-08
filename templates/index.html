@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicare Hospital Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="dashboard">
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">CMS Medicare Inpatient Hospitals</p>
+                <h1>Hospital discharge dashboard</h1>
+                <p class="subtitle">
+                    A quick overview of hospital discharges by U.S. region.
+                </p>
+            </div>
+            <div class="header-badge">Data overview</div>
+        </header>
+
+        <section class="content-card plot-card">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Regional comparison</p>
+                    <h2>Average total discharges</h2>
+                </div>
+                <span class="unit-label">Average per hospital</span>
+            </div>
+            <div class="chart-container">
+                <img src="data:image/png;base64,{{ fig_bar }}"
+                     alt="Bar chart showing average discharges by region">
+            </div>
+        </section>
+
+        <section class="content-card plot-card">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Cost comparison</p>
+                    <h2>Discharges and payment amounts</h2>
+                </div>
+                <span class="unit-label">By region</span>
+            </div>
+            <div class="chart-container">
+                <img src="data:image/png;base64,{{ fig_scatter }}"
+                     alt="Scatter plot comparing discharges and payment amounts by region">
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
