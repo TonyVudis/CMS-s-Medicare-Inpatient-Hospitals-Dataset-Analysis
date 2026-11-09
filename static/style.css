@@ -144,6 +144,69 @@ h2 {
     width: 100%;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 24px 0 8px;
+}
+
+.insight-card {
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+    padding: 20px 22px;
+}
+
+.insight-card dt {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.insight-card dd {
+    color: var(--navy);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 12px 0 4px;
+}
+
+.insight-note {
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.finding-box {
+    background: var(--sky);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-top: 20px;
+    padding: 18px 22px;
+}
+
+.finding-box h3 {
+    color: var(--navy);
+    font-size: 0.9rem;
+    margin: 0 0 6px;
+}
+
+.finding-box p {
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 0;
+}
+
+.finding-box .finding-note {
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 6px;
+}
+
 .content-card + .content-card {
     margin-top: 24px;
 }
@@ -166,6 +229,11 @@ footer {
     footer {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .insight-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
     }
 }
 

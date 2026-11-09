@@ -12,7 +12,7 @@
 
 # Description
 
-I would like to work with real applicable data and see what I am capable of doing and I am using the dataset by CMS to practice. I am going to use Flask to display a local dashboard to show findings and insights.
+I would like to work with real applicable data and see what I am capable of doing and I am using the dataset by CMS to practice. I am going to use Flask to display a local dashboard to show findings and insights. I will display these findings using html and css.
 
 ---
 
@@ -33,6 +33,16 @@ I would like to work with real applicable data and see what I am capable of doin
     Matplotlib
 
         pip/conda install matplotlib
+
+---
+
+# Running Process
+
+Run in the terminal 
+
+    python app.py
+
+Then open the url locally in browser
 
 ---
 

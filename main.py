@@ -80,6 +80,7 @@ def state_to_region(data):
     }
 
     data['region'] = data['rndrng_prvdr_state_abrvtn'].map(state_to_region)
+
     return data
 
 CMS_data_regions = state_to_region(CMS_data_cleaned)
@@ -123,3 +124,14 @@ def scatter_avg_discharge_avg_payment_by_region(CMS_data_regions):
     return fig_scatter
 
 fig_scatter = scatter_avg_discharge_avg_payment_by_region(CMS_data_regions)
+
+def Overall_info(data):
+    #Correlation between average covered charges and average medicare payments
+    medi_cov_correlation = data['avg_submtd_cvrd_chrg'].corr(data['avg_mdcr_pymt_amt'])
+
+    #Correlation between average medicare payments and average total payments
+    medi_tot_correlation = data['avg_mdcr_pymt_amt'].corr(data['avg_tot_pymt_amt'])
+
+    return medi_cov_correlation, medi_tot_correlation
+
+medi_cov_correlation, medi_tot_correlation = Overall_info(CMS_data_cleaned)

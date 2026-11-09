@@ -31,6 +31,10 @@
                 <img src="data:image/png;base64,{{ fig_bar }}"
                      alt="Bar chart showing average discharges by region">
             </div>
+            <aside class="finding-box">
+                <h3>Key finding</h3>
+                <p>{{ discharge_insight }}</p>
+            </aside>
         </section>
 
         <section class="content-card plot-card">
@@ -45,8 +49,41 @@
                 <img src="data:image/png;base64,{{ fig_scatter }}"
                      alt="Scatter plot comparing discharges and payment amounts by region">
             </div>
+            <aside class="finding-box">
+                <h3>How to read this</h3>
+                <p>{{ payment_insight }}</p>
+                <p class="finding-note">
+                    The chart compares regional patterns; it does not show that discharge
+                    volume causes payment amounts to change.
+                </p>
+            </aside>
         </section>
 
+        <section class="content-card plot-card">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Correlation analysis</p>
+                    <h2>Payment relationships</h2>
+                </div>
+                <span class="unit-label">Correlation coefficient</span>
+            </div>
+            <dl class="insight-grid">
+                <div class="insight-card">
+                    <dt>Covered charges and Medicare payments</dt>
+                    <dd>{{ medi_cov_correlation|round(3) }}</dd>
+                    <span class="insight-note">Correlation coefficient</span>
+                </div>
+                <div class="insight-card">
+                    <dt>Medicare payments and total payments</dt>
+                    <dd>{{ medi_tot_correlation|round(3) }}</dd>
+                    <span class="insight-note">Correlation coefficient</span>
+                </div>
+            </dl>
+            <aside class="finding-box">
+                <h3>What the correlations suggest</h3>
+                <p>{{ correlation_insight }}</p>
+            </aside>
+        </section>
     </main>
 </body>
 </html>
