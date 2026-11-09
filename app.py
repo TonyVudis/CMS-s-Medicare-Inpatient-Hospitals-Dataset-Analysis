@@ -1,5 +1,13 @@
 from flask import Flask, render_template
-from main import fig_bar, fig_scatter, medi_cov_correlation, medi_tot_correlation
+from main import (fig_bar, 
+                  fig_scatter, 
+                  medi_cov_correlation, 
+                  medi_tot_correlation, 
+                  medi_tot_percent, 
+                  correlation_insight, 
+                  medi_tot_percent_insight, 
+                  discharge_insight, 
+                  payment_insight)
 from io import BytesIO
 import base64
 
@@ -18,9 +26,11 @@ def home():
                            fig_scatter=figure_to_image(fig_scatter),
                            medi_cov_correlation=medi_cov_correlation,
                            medi_tot_correlation=medi_tot_correlation,
-                           discharge_insight="The region with the highest average discharges is the Midwest, while the lowest is the West.",
-                           payment_insight="The region with the highest average total payment amount is the Northeast, while the lowest is the South.",
-                           correlation_insight="There is a strong positive correlation between covered charges and Medicare payments, and a moderate positive correlation between Medicare payments and total payments."
+                           medi_tot_percent=medi_tot_percent,
+                           discharge_insight=discharge_insight,
+                           payment_insight=payment_insight,
+                           correlation_insight=correlation_insight,
+                           medi_tot_percent_insight=medi_tot_percent_insight
                            )
 
 if __name__ == '__main__':

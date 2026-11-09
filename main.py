@@ -102,10 +102,12 @@ def bar_avg_tot_discharges_by_region(CMS_data_regions):
     plt.title('Bar Plot for Avg Total Discharges for Each Region')
     plt.legend(fontsize = 8, ncol =2)
     plt.tight_layout(pad=2.0)
+    
+    discharge_insight="The region with the highest average discharges is the Midwest, while the lowest is the West."
 
-    return fig_bar
+    return fig_bar, discharge_insight
 
-fig_bar = bar_avg_tot_discharges_by_region(CMS_data_regions)
+fig_bar, discharge_insight = bar_avg_tot_discharges_by_region(CMS_data_regions)
 
 def scatter_avg_discharge_avg_payment_by_region(CMS_data_regions):
     fig_scatter = plt.figure(figsize=(12, 6), dpi = 125)
@@ -121,9 +123,11 @@ def scatter_avg_discharge_avg_payment_by_region(CMS_data_regions):
     plt.legend(fontsize = 8, ncol =2)
     plt.tight_layout(pad=2.0)
 
-    return fig_scatter
+    payment_insight="The region with the highest average total payment amount is the Northeast, while the lowest is the South."
 
-fig_scatter = scatter_avg_discharge_avg_payment_by_region(CMS_data_regions)
+    return fig_scatter, payment_insight
+
+fig_scatter, payment_insight = scatter_avg_discharge_avg_payment_by_region(CMS_data_regions)
 
 def Overall_info(data):
     #Correlation between average covered charges and average medicare payments
@@ -132,6 +136,21 @@ def Overall_info(data):
     #Correlation between average medicare payments and average total payments
     medi_tot_correlation = data['avg_mdcr_pymt_amt'].corr(data['avg_tot_pymt_amt'])
 
-    return medi_cov_correlation, medi_tot_correlation
+    #What percent of the paid total amount is covered by Medicare payments by region
+    medi_tot_percent = (
+        data.assign(
+            percentage=data["avg_mdcr_pymt_amt"] / data["avg_tot_pymt_amt"] * 100
+        )
+        .groupby("region", as_index=False)["percentage"]
+        .mean()
+        .round(2)
+    )
 
-medi_cov_correlation, medi_tot_correlation = Overall_info(CMS_data_cleaned)
+    medi_tot_percent = medi_tot_percent.to_html(index=False)
+
+    correlation_insight="There is a strong positive correlation between covered charges and Medicare payments, and a moderate positive correlation between Medicare payments and total payments."
+    medi_tot_percent_insight="On average, Medicare payments cover a significant portion of the total payments."
+
+    return medi_cov_correlation, medi_tot_correlation, medi_tot_percent, correlation_insight, medi_tot_percent_insight
+
+medi_cov_correlation, medi_tot_correlation, medi_tot_percent, correlation_insight, medi_tot_percent_insight = Overall_info(CMS_data_cleaned)

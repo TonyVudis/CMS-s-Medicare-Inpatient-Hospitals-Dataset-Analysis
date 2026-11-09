@@ -1,7 +1,7 @@
 :root {
     color-scheme: light;
-    --navy: #14324a;
-    --blue: #2878a8;
+    --navy: #761c94;
+    --blue: #6f3ccd;
     --sky: #eaf5fb;
     --ink: #1d2b36;
     --muted: #6b7b86;
@@ -207,6 +207,37 @@ h2 {
     margin-top: 6px;
 }
 
+.medicare-table table.dataframe {
+    border-collapse: collapse;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.medicare-table table.dataframe th,
+.medicare-table table.dataframe td {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: left;
+}
+
+.medicare-table table.dataframe th {
+    background: var(--surface);
+    color: var(--navy);
+    font-size: 0.8rem;
+}
+
+.medicare-table table.dataframe td {
+    font-size: 0.88rem;
+}
+
+.medicare-table table.dataframe tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.medicare-table table.dataframe tbody tr:hover {
+    background: rgba(255, 255, 255, 0.65);
+}
+
 .content-card + .content-card {
     margin-top: 24px;
 }
@@ -234,6 +265,10 @@ footer {
     .insight-grid {
         grid-template-columns: 1fr;
         width: 100%;
+    }
+
+    .percentage-grid {
+        grid-template-columns: 1fr;
     }
 }
 
